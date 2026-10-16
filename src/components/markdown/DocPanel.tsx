@@ -1,3 +1,4 @@
+import { PageLoading } from '@/components/ui/Skeleton';
 import { MarkdownEditor } from '@/components/markdown/MarkdownEditor';
 import { useDocument } from '@/hooks/useDocument';
 import type { DocumentScope } from '@/types';
@@ -11,7 +12,7 @@ interface Props {
 
 export function DocPanel({ scope, ownerId, compact }: Props) {
   const { content, setContent, status, retry, keepMine, useServer } = useDocument(scope, ownerId);
-  if (content === null) return <div className="loading">Carregando documentação…</div>;
+  if (content === null) return <PageLoading className="" />;
 
   return (
     <>

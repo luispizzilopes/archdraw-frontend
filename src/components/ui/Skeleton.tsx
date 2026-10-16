@@ -8,6 +8,14 @@ export function Spinner({ label = 'Carregando' }: { label?: string }) {
   return <span className="spinner" role="status" aria-label={label} />;
 }
 
+export function PageLoading({ className = 'page' }: { className?: string }) {
+  return (
+    <div className={`${className} loading`}>
+      <Spinner />
+    </div>
+  );
+}
+
 export function CardSkeletonGrid({ count = 3 }: { count?: number }) {
   return (
     <div className="card-grid" aria-busy="true">

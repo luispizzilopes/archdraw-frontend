@@ -51,7 +51,7 @@ describe('proteção de rotas', () => {
   it('enquanto restaura a sessão não decide nem redireciona', () => {
     auth.restoring = true;
     renderAt('/projects');
-    expect(screen.getByText('Carregando…')).toBeInTheDocument();
+    expect(screen.getByRole('status')).toBeInTheDocument();
     expect(screen.queryByText('tela de login')).not.toBeInTheDocument();
   });
 });

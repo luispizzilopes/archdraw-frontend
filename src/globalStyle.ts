@@ -127,7 +127,7 @@ kbd {
 .row { display: flex; align-items: center; gap: 8px; }
 .row.wrap { flex-wrap: wrap; }
 .clamp { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.loading { padding: 40px; color: var(--text-2); }
+.loading { display: flex; justify-content: center; align-items: flex-start; padding: 40px; color: var(--text-2); }
 .link { color: var(--accent-fg); display: inline-flex; align-items: center; gap: 4px; }
 .link:hover { text-decoration: underline; }
 

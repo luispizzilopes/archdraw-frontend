@@ -1,3 +1,4 @@
+import { PageLoading } from '@/components/ui/Skeleton';
 import { ChevronRight, Copy, Download, FilePlus2, FileText, Pencil, Puzzle, Search, Trash2 } from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
@@ -55,7 +56,7 @@ export function ProjectPage() {
     return (diagrams ?? []).filter((d) => !t || d.name.toLowerCase().includes(t));
   }, [diagrams, q]);
 
-  if (loading) return <div className="page loading">Carregando…</div>;
+  if (loading) return <PageLoading />;
   if (!project)
     return (
       <div className="page">
