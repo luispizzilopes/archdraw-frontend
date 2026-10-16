@@ -1,0 +1,29 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "plugins": [
+    "typescript",
+    "react",
+    "react-hooks"
+  ],
+  "categories": {
+    "correctness": "error"
+  },
+  "rules": {
+    "no-unused-vars": [
+      "warn",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_"
+      }
+    ],
+    "typescript/no-explicit-any": "error",
+    "react/static-components": "warn",
+    "react/refs": "warn",
+    "react/set-state-in-effect": "warn",
+    "react/immutability": "warn"
+  },
+  "ignorePatterns": [
+    "dist",
+    "node_modules"
+  ]
+}
