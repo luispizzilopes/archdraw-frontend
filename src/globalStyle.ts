@@ -254,8 +254,8 @@ select.input { padding-right: 4px; }
 .recent-text small { font-size: 11px; color: var(--text-3); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .main { overflow: auto; min-width: 0; }
 
-.page { max-width: 1120px; margin: 0 auto; padding: 32px 36px 56px; display: flex; flex-direction: column; gap: 22px; }
-.page.narrow { max-width: 720px; }
+.page { max-width: 1480px; margin: 0 auto; padding: 28px 32px 56px; display: flex; flex-direction: column; gap: 22px; }
+.page.narrow { max-width: 1480px; }
 .page-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
 .page-head > div:first-child { display: flex; flex-direction: column; gap: 4px; }
 .crumbs { display: flex; align-items: center; gap: 4px; color: var(--text-3); font-size: 12.5px; margin-bottom: -10px; }
