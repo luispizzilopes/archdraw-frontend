@@ -63,7 +63,7 @@ export function Register() {
           />
         </Field>
         <FormError message={fieldError ?? error} />
-        <button className="btn btn-primary" type="submit" disabled={loading} style={{ width: '100%' }}>
+        <button className="btn btn-primary btn-block btn-lg" type="submit" disabled={loading}>
           {loading ? 'Criando…' : 'Criar conta'}
         </button>
       </form>

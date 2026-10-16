@@ -141,6 +141,8 @@ kbd {
 .btn-danger { color: var(--danger); }
 .btn-danger:hover:not(:disabled) { background: color-mix(in srgb, var(--danger) 14%, transparent); }
 .btn-ghost { background: transparent; border-color: transparent; color: var(--text-2); }
+.btn-block { display: flex; width: 100%; justify-content: center; }
+.btn-lg { height: 38px; font-size: 14px; }
 .btn-sm { height: 28px; padding: 0 10px; font-size: 12px; }
 
 .icon-btn {
@@ -305,6 +307,8 @@ select.input { padding-right: 4px; }
 .doc-frame { height: calc(100vh - 290px); min-height: 440px; border: 1px solid var(--border); border-radius: 9px; overflow: hidden; background: var(--surface); }
 
 .panel { padding: 16px 18px; background: var(--surface); border: 1px solid var(--border); border-radius: 9px; display: flex; flex-direction: column; gap: 10px; align-items: flex-start; }
+.auth-actions { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+.code-input { text-align: center; font-size: 22px; letter-spacing: 0.5em; padding-left: 0.5em; height: 46px; }
 .password-input { position: relative; display: block; }
 .password-input .input { width: 100%; padding-right: 38px; }
 .password-toggle { position: absolute; top: 50%; right: 4px; transform: translateY(-50%); }

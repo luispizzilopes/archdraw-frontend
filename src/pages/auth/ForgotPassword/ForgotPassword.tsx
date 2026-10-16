@@ -59,7 +59,7 @@ export function ForgotPassword() {
             <input className="input" type="email" autoComplete="email" autoFocus value={email} onChange={(e) => setEmail(e.target.value)} />
           </Field>
           <FormError message={fieldError ?? request.error} />
-          <button className="btn btn-primary" type="submit" disabled={request.loading} style={{ width: '100%' }}>
+          <button className="btn btn-primary btn-block btn-lg" type="submit" disabled={request.loading}>
             {request.loading ? 'Enviando…' : 'Enviar código'}
           </button>
         </form>
@@ -67,8 +67,10 @@ export function ForgotPassword() {
         <form className="form" onSubmit={confirm} noValidate>
           <Field label="Código">
             <input
-              className="input mono"
+              className="input mono code-input"
               inputMode="numeric"
+              autoComplete="one-time-code"
+              placeholder="000000"
               maxLength={6}
               autoFocus
               value={code}
@@ -83,19 +85,22 @@ export function ForgotPassword() {
             />
           </Field>
           <FormError message={fieldError ?? reset.error} />
-          <button className="btn btn-primary" type="submit" disabled={reset.loading} style={{ width: '100%' }}>
-            {reset.loading ? 'Salvando…' : 'Redefinir senha'}
-          </button>
-          <button
-            type="button"
-            className="btn btn-ghost btn-sm"
-            onClick={() => {
-              setStep('request');
-              setFieldError(null);
-            }}
-          >
-            Reenviar código
-          </button>
+          <div className="auth-actions">
+            <button className="btn btn-primary btn-block btn-lg" type="submit" disabled={reset.loading}>
+              {reset.loading ? 'Salvando…' : 'Redefinir senha'}
+            </button>
+            <button
+              type="button"
+              className="btn btn-ghost btn-block"
+              onClick={() => {
+                setStep('request');
+                setCode('');
+                setFieldError(null);
+              }}
+            >
+              Usar outro e-mail
+            </button>
+          </div>
         </form>
       )}
     </AuthLayout>
