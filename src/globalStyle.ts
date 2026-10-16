@@ -36,6 +36,8 @@ export const GlobalStyle = createGlobalStyle`
   --cat-messaging: #f2994a;
   --cat-infra: #b69cf5;
   --cat-internal: #4fd1c5;
+  --cat-patterns: #e6c75a;
+  --cat-language: #7fd0e8;
   --cat-context: #e58fb4;
   --cat-structure: #8e97ab;
 
@@ -78,6 +80,8 @@ export const GlobalStyle = createGlobalStyle`
   --cat-messaging: #d9731a;
   --cat-infra: #7c5cd6;
   --cat-internal: #108f86;
+  --cat-patterns: #a8820f;
+  --cat-language: #1b7f9c;
   --cat-context: #c2487f;
   --cat-structure: #5d6678;
   --shadow: 0 8px 28px rgb(20 24 33 / 16%);
@@ -165,6 +169,7 @@ select.input { padding-right: 4px; }
 .field-label { font-size: 11px; font-weight: 500; color: var(--text-2); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 5px; }
 .field .field-label { margin-bottom: 0; }
 .field-hint { font-size: 11.5px; color: var(--text-3); }
+.arch-picker .field-hint { margin-top: 8px; }
 .form { display: flex; flex-direction: column; gap: 14px; }
 .check { display: flex; align-items: center; gap: 8px; font-size: 13px; padding: 3px 0; cursor: pointer; }
 .check input { accent-color: var(--accent); }

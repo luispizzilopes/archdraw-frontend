@@ -188,7 +188,7 @@ export interface AppSettings {
   defaultSnapToGrid: boolean;
 }
 
-export type ComponentCategoryId = 'apps' | 'data' | 'messaging' | 'infra' | 'internal' | 'context' | 'structure';
+export type ComponentCategoryId = 'apps' | 'data' | 'messaging' | 'infra' | 'internal' | 'patterns' | 'language' | 'context' | 'structure';
 
 export type NodeShape = 'box' | 'cylinder' | 'pill' | 'external' | 'actor' | 'boundary' | 'note';
 
