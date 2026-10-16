@@ -111,34 +111,6 @@ export function DashboardPage() {
         </section>
       )}
 
-      {recentLoading && !recent && (
-        <section>
-          <h3 className="section-title">Diagramas recentes</h3>
-          <CardSkeletonGrid count={3} />
-        </section>
-      )}
-
-      {!!recent?.length && (
-        <section>
-          <h3 className="section-title">Diagramas recentes</h3>
-          <div className="card-grid">
-            {recent.map((d) => (
-              <Link key={d.id} to={`/projects/${d.projectId}/diagrams/${d.id}`} className="card card-link">
-                <div className="card-title">{d.name}</div>
-                <div className="muted small">{projects?.find((p) => p.id === d.projectId)?.name}</div>
-                <StyleBadges styleIds={d.styleIds} patternIds={d.patternIds} />
-                <div className="card-foot">
-                  <span>
-                    {d.nodeCount} componentes · {d.connectionCount} conexões
-                  </span>
-                  <span>{formatRelative(d.updatedAt)}</span>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
       {projectsLoading && !projects && (
         <section>
           <h3 className="section-title">Projetos</h3>
@@ -163,6 +135,34 @@ export function DashboardPage() {
                 <div className="card-foot">
                   <span />
                   <span>{formatRelative(p.updatedAt)}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {recentLoading && !recent && (
+        <section>
+          <h3 className="section-title">Diagramas recentes</h3>
+          <CardSkeletonGrid count={3} />
+        </section>
+      )}
+
+      {!!recent?.length && (
+        <section>
+          <h3 className="section-title">Diagramas recentes</h3>
+          <div className="card-grid">
+            {recent.map((d) => (
+              <Link key={d.id} to={`/projects/${d.projectId}/diagrams/${d.id}`} className="card card-link">
+                <div className="card-title">{d.name}</div>
+                <div className="muted small">{projects?.find((p) => p.id === d.projectId)?.name}</div>
+                <StyleBadges styleIds={d.styleIds} patternIds={d.patternIds} />
+                <div className="card-foot">
+                  <span>
+                    {d.nodeCount} componentes · {d.connectionCount} conexões
+                  </span>
+                  <span>{formatRelative(d.updatedAt)}</span>
                 </div>
               </Link>
             ))}
