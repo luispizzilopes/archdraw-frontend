@@ -265,6 +265,12 @@ select.input { padding-right: 4px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .stat { display: flex; flex-direction: column; padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-2); font-size: 12.5px; }
 .stat-n { font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--text); line-height: 1.1; }
+.skeleton { display: block; border-radius: 6px; background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%); background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; }
+@keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
+.spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border-strong); border-top-color: var(--accent-fg); border-radius: 50%; animation: spin 0.7s linear infinite; }
+.stat-n .spinner { width: 22px; height: 22px; margin: 3px 0; }
+@keyframes spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) { .skeleton, .spinner { animation-duration: 3s; } }
 .empty, .empty-hero { padding: 28px; border: 1px dashed var(--border-strong); border-radius: 10px; color: var(--text-2); text-align: center; }
 .empty-hero { text-align: left; display: flex; flex-direction: column; gap: 10px; background: var(--surface); border-style: solid; border-color: var(--border); }
 .empty-hero .row { margin-top: 6px; }

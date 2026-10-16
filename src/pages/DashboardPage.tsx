@@ -2,6 +2,7 @@ import { ArrowRight, FilePlus2, FolderPlus, Sparkles, Upload } from 'lucide-reac
 import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProjectFormModal } from '@/components/project/ProjectFormModal';
+import { CardSkeletonGrid, Spinner } from '@/components/ui/Skeleton';
 import { StyleBadges } from '@/components/ui/StyleBadges';
 import { useToast } from '@/components/ui/Toast';
 import { MigrationBanner } from '@/components/project/MigrationBanner';
@@ -19,9 +20,9 @@ export function DashboardPage() {
   const toast = useToast();
   const [creating, setCreating] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
-  const { projects } = useProjects();
-  const { recent } = useRecentDiagrams(6);
-  const { summary } = useDashboardSummary();
+  const { projects, loading: projectsLoading } = useProjects();
+  const { recent, loading: recentLoading } = useRecentDiagrams(6);
+  const { summary, loading: summaryLoading } = useDashboardSummary();
   const createProject = useCreateProject();
   const importProject = useImportProject();
   const loadExample = useLoadExampleProject();
@@ -75,15 +76,15 @@ export function DashboardPage() {
 
       <section className="stats">
         <div className="stat">
-          <span className="stat-n">{summary?.projects ?? projects?.length ?? 0}</span>
+          <span className="stat-n">{summaryLoading && !summary ? <Spinner /> : (summary?.projects ?? projects?.length ?? 0)}</span>
           <span>Projetos</span>
         </div>
         <div className="stat">
-          <span className="stat-n">{summary?.diagrams ?? 0}</span>
+          <span className="stat-n">{summaryLoading && !summary ? <Spinner /> : (summary?.diagrams ?? 0)}</span>
           <span>Diagramas</span>
         </div>
         <div className="stat">
-          <span className="stat-n">{summary?.documents ?? 0}</span>
+          <span className="stat-n">{summaryLoading && !summary ? <Spinner /> : (summary?.documents ?? 0)}</span>
           <span>Documentos escritos</span>
         </div>
       </section>
@@ -110,6 +111,13 @@ export function DashboardPage() {
         </section>
       )}
 
+      {recentLoading && !recent && (
+        <section>
+          <h3 className="section-title">Diagramas recentes</h3>
+          <CardSkeletonGrid count={3} />
+        </section>
+      )}
+
       {!!recent?.length && (
         <section>
           <h3 className="section-title">Diagramas recentes</h3>
@@ -128,6 +136,13 @@ export function DashboardPage() {
               </Link>
             ))}
           </div>
+        </section>
+      )}
+
+      {projectsLoading && !projects && (
+        <section>
+          <h3 className="section-title">Projetos</h3>
+          <CardSkeletonGrid count={3} />
         </section>
       )}
 

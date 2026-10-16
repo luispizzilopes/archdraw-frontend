@@ -3,6 +3,7 @@ import { useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProjectFormModal } from '@/components/project/ProjectFormModal';
 import { ConfirmDialog } from '@/components/ui/Modal';
+import { ListSkeleton } from '@/components/ui/Skeleton';
 import { StyleBadges } from '@/components/ui/StyleBadges';
 import { useToast } from '@/components/ui/Toast';
 import { useCreateProject } from '@/hooks/useCreateProject';
@@ -55,7 +56,9 @@ export function ProjectsPage() {
         <div className="empty">{projects?.length ? 'Nenhum projeto corresponde à busca.' : 'Nenhum projeto criado.'}</div>
       )}
 
-      <div className="list">
+      {loading && !projects && <ListSkeleton />}
+
+      {!!filtered.length && <div className="list">
         {filtered.map((p) => (
           <div key={p.id} className="list-row">
             <Link to={`/projects/${p.id}`} className="list-main">
@@ -91,7 +94,7 @@ export function ProjectsPage() {
             </div>
           </div>
         ))}
-      </div>
+      </div>}
 
       {creating && (
         <ProjectFormModal
