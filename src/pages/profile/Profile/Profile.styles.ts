@@ -1,18 +1,14 @@
 import styled from 'styled-components';
 
-export const Section = styled.section`
-  display: grid;
-  gap: 10px;
-  margin-bottom: 14px;
-`;
+export const Section = styled.section``;
 
 export const Avatar = styled.span`
   display: grid;
   place-items: center;
-  width: 56px;
-  height: 56px;
+  width: 72px;
+  height: 72px;
   overflow: hidden;
-  font-size: 18px;
+  font-size: 24px;
   font-weight: 600;
   color: var(--accent-ink);
   background: var(--accent);

@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '@/components/ui/AuthLayout/AuthLayout';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Field } from '@/components/ui/Field';
 import { FormError } from '@/components/ui/FormError/FormError';
 import { useRegister } from '@/hooks/useRegister';
@@ -48,18 +49,14 @@ export function Register() {
           <input className="input" type="email" autoComplete="email" value={email} onChange={(e) => setEmail(e.target.value)} />
         </Field>
         <Field label="Senha" hint="Mínimo de 8 caracteres, com maiúscula, minúscula e número.">
-          <input
-            className="input"
-            type="password"
+          <PasswordInput
             autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Field>
         <Field label="Confirmar senha">
-          <input
-            className="input"
-            type="password"
+          <PasswordInput
             autoComplete="new-password"
             value={confirm}
             onChange={(e) => setConfirm(e.target.value)}

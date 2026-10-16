@@ -1,4 +1,4 @@
-import { Moon, Sparkles, Sun } from 'lucide-react';
+import { Database, Grid3x3, Moon, Palette, Sparkles, Sun } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { MigrationBanner } from '@/components/project/MigrationBanner';
 import { useToast } from '@/components/ui/Toast';
@@ -30,8 +30,14 @@ export function SettingsPage() {
         </div>
       </header>
 
-      <section className="panel">
-        <h3>Aparência</h3>
+      <section className="panel stretch">
+        <div className="panel-head">
+          <span className="panel-icon"><Palette size={16} /></span>
+          <div>
+            <h3>Aparência</h3>
+            <p className="muted small">Escolha o tema da interface.</p>
+          </div>
+        </div>
         <div className="segmented">
           <button className={settings.theme === 'dark' ? 'on' : ''} onClick={() => update({ theme: 'dark' })}>
             <Moon size={14} />
@@ -44,25 +50,48 @@ export function SettingsPage() {
         </div>
       </section>
 
-      <section className="panel">
-        <h3>Novos diagramas</h3>
-        <label className="check">
-          <input type="checkbox" checked={settings.defaultShowGrid} onChange={(e) => update({ defaultShowGrid: e.target.checked })} />
-          Exibir grid
-        </label>
-        <label className="check">
-          <input type="checkbox" checked={settings.defaultSnapToGrid} onChange={(e) => update({ defaultSnapToGrid: e.target.checked })} />
-          Alinhar ao grid (snap)
-        </label>
+      <section className="panel stretch">
+        <div className="panel-head">
+          <span className="panel-icon"><Grid3x3 size={16} /></span>
+          <div>
+            <h3>Novos diagramas</h3>
+            <p className="muted small">Valores iniciais aplicados ao criar um diagrama.</p>
+          </div>
+        </div>
+        <div>
+          <label className="setting-row">
+            <span className="setting-text">
+              Exibir grid
+              <span className="muted">Mostra a grade de fundo no canvas.</span>
+            </span>
+            <input className="switch" type="checkbox" checked={settings.defaultShowGrid} onChange={(e) => update({ defaultShowGrid: e.target.checked })} />
+          </label>
+          <label className="setting-row">
+            <span className="setting-text">
+              Alinhar ao grid (snap)
+              <span className="muted">Encaixa os componentes na grade ao arrastar.</span>
+            </span>
+            <input className="switch" type="checkbox" checked={settings.defaultSnapToGrid} onChange={(e) => update({ defaultSnapToGrid: e.target.checked })} />
+          </label>
+        </div>
       </section>
 
-      <section className="panel">
-        <h3>Dados</h3>
-        <p className="muted small">Seus projetos ficam na sua conta. Use a exportação em JSON de cada projeto para backups.</p>
-        <div className="row">
+      <section className="panel stretch">
+        <div className="panel-head">
+          <span className="panel-icon"><Database size={16} /></span>
+          <div>
+            <h3>Dados</h3>
+            <p className="muted small">Seus projetos ficam na sua conta. Use a exportação em JSON de cada projeto para backups.</p>
+          </div>
+        </div>
+        <div className="setting-row" style={{ paddingBottom: 0 }}>
+          <span className="setting-text">
+            Projeto de exemplo
+            <span className="muted">Carrega um sistema de E-commerce completo para explorar.</span>
+          </span>
           <button className="btn" disabled={loadExample.loading} onClick={() => void openExample()}>
             <Sparkles size={15} />
-            Carregar projeto de exemplo
+            {loadExample.loading ? 'Carregando…' : 'Carregar'}
           </button>
         </div>
       </section>

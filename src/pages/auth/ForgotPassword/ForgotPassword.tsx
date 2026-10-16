@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '@/components/ui/AuthLayout/AuthLayout';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Field } from '@/components/ui/Field';
 import { FormError } from '@/components/ui/FormError/FormError';
 import { useToast } from '@/components/ui/Toast';
@@ -75,9 +76,7 @@ export function ForgotPassword() {
             />
           </Field>
           <Field label="Nova senha" hint="Mínimo de 8 caracteres, com maiúscula, minúscula e número.">
-            <input
-              className="input"
-              type="password"
+            <PasswordInput
               autoComplete="new-password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

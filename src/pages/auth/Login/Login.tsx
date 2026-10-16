@@ -1,6 +1,7 @@
 import { useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthLayout } from '@/components/ui/AuthLayout/AuthLayout';
+import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Field } from '@/components/ui/Field';
 import { FormError } from '@/components/ui/FormError/FormError';
 import { useLogin } from '@/hooks/useLogin';
@@ -44,9 +45,7 @@ export function Login() {
           <input className="input" type="email" autoComplete="email" autoFocus value={email} onChange={(e) => setEmail(e.target.value)} />
         </Field>
         <Field label="Senha">
-          <input
-            className="input"
-            type="password"
+          <PasswordInput
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
