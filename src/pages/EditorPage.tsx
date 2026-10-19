@@ -1,4 +1,4 @@
-import { PageLoading } from '@/components/ui/Skeleton';
+import { EditorSkeleton } from '@/components/ui/Skeleton';
 import { ReactFlowProvider, useReactFlow } from '@xyflow/react';
 import { ArrowLeft, ChevronRight, CornerLeftUp, Download, FileImage, FileText, Image as ImageIcon } from 'lucide-react';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
@@ -259,7 +259,7 @@ function EditorInner({ projectId, diagramId }: { projectId: string; diagramId: s
       </div>
     );
   }
-  if (!ready || !meta) return <PageLoading />;
+  if (!ready || !meta) return <EditorSkeleton />;
 
   const linkingNode = linkingFor ? useEditorStore.getState().nodes.find((n) => n.id === linkingFor) : undefined;
   const linkingPattern = linkingNode?.data.properties.patternId;

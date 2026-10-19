@@ -273,6 +273,10 @@ select.input { padding-right: 4px; }
 .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .stat { display: flex; flex-direction: column; padding: 14px 16px; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; color: var(--text-2); font-size: 12.5px; }
 .stat-n { font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--text); line-height: 1.1; }
+.skeleton-canvas { position: absolute; inset: 0; }
+.skeleton-canvas > .skeleton { position: absolute; }
+.auth-skeleton { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.shell > .main > .page { min-height: 100%; }
 .skeleton { display: block; border-radius: 6px; background: linear-gradient(90deg, var(--surface-2) 25%, var(--surface-3) 50%, var(--surface-2) 75%); background-size: 200% 100%; animation: shimmer 1.4s ease-in-out infinite; }
 @keyframes shimmer { from { background-position: 200% 0; } to { background-position: -200% 0; } }
 .spinner { display: inline-block; width: 18px; height: 18px; border: 2px solid var(--border-strong); border-top-color: var(--accent-fg); border-radius: 50%; animation: spin 0.7s linear infinite; }

@@ -2,6 +2,7 @@ import { Camera, KeyRound, LogOut, Trash2, User } from 'lucide-react';
 import { useEffect, useRef, useState, type FormEvent } from 'react';
 import { PasswordInput } from '@/components/ui/PasswordInput';
 import { Field } from '@/components/ui/Field';
+import { PageSkeleton } from '@/components/ui/Skeleton';
 import { FormError } from '@/components/ui/FormError/FormError';
 import { useToast } from '@/components/ui/Toast';
 import { useAuth } from '@/hooks/useAuth';
@@ -16,7 +17,7 @@ import { Avatar, Section } from './Profile.styles';
 export function Profile() {
   const toast = useToast();
   const { user, logout } = useAuth();
-  const { profile, error: loadError } = useProfile();
+  const { profile, loading: profileLoading, error: loadError } = useProfile();
   const updateProfile = useUpdateProfile();
   const changePassword = useChangePassword();
   const upload = useUploadProfilePhoto();
@@ -70,6 +71,8 @@ export function Profile() {
     .map((w) => w[0]?.toUpperCase())
     .join('');
 
+  if (profileLoading && !profile && !loadError) return <PageSkeleton variant="form" />;
+
   return (
     <div className="page narrow">
       <header className="page-head">
@@ -114,13 +117,17 @@ export function Profile() {
               </button>
             )}
           </div>
-          <span className="muted small" style={{ marginTop: 6 }}>JPEG, PNG ou WebP, até 2 MB.</span>
+          <span className="muted small" style={{ marginTop: 6 }}>
+            JPEG, PNG ou WebP, até 2 MB.
+          </span>
         </div>
       </section>
 
       <Section className="panel stretch">
         <div className="panel-head">
-          <span className="panel-icon"><User size={16} /></span>
+          <span className="panel-icon">
+            <User size={16} />
+          </span>
           <div>
             <h3>Dados pessoais</h3>
             <p className="muted small">Como seu nome aparece para você no Archdraw.</p>
@@ -132,7 +139,11 @@ export function Profile() {
           </Field>
           <FormError message={updateProfile.error} />
           <div className="panel-foot">
-            <button className="btn btn-primary" type="submit" disabled={updateProfile.loading || !name.trim() || name.trim() === profile?.name}>
+            <button
+              className="btn btn-primary"
+              type="submit"
+              disabled={updateProfile.loading || !name.trim() || name.trim() === profile?.name}
+            >
               {updateProfile.loading ? 'Salvando…' : 'Salvar alterações'}
             </button>
           </div>
@@ -141,7 +152,9 @@ export function Profile() {
 
       <Section className="panel stretch">
         <div className="panel-head">
-          <span className="panel-icon"><KeyRound size={16} /></span>
+          <span className="panel-icon">
+            <KeyRound size={16} />
+          </span>
           <div>
             <h3>Alterar senha</h3>
             <p className="muted small">Ao alterar, as outras sessões são encerradas.</p>
@@ -165,7 +178,9 @@ export function Profile() {
 
       <Section className="panel stretch">
         <div className="panel-head">
-          <span className="panel-icon"><LogOut size={16} /></span>
+          <span className="panel-icon">
+            <LogOut size={16} />
+          </span>
           <div style={{ flex: 1 }}>
             <h3>Sessão</h3>
             <p className="muted small">Encerra o acesso neste navegador.</p>

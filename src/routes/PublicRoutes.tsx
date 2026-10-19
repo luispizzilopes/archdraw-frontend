@@ -1,11 +1,11 @@
-import { PageLoading } from '@/components/ui/Skeleton';
+import { AuthSkeleton } from '@/components/ui/Skeleton';
 import { Navigate, Outlet } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
 
 export function PublicRoutes() {
   const { isAuthenticated, restoring } = useAuth();
 
-  if (restoring) return <PageLoading />;
+  if (restoring) return <AuthSkeleton />;
   if (isAuthenticated) return <Navigate to="/" replace />;
   return <Outlet />;
 }
