@@ -419,6 +419,9 @@ select.input { padding-right: 4px; }
 .node-head .node-type { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .node-name { font-weight: 600; font-size: 13px; line-height: 1.25; overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
 .node-tech { font-family: var(--font-mono); font-size: 10.5px; color: var(--text-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.node-desc { flex: 1 1 0; min-height: 0; margin: 3px 0 0; padding-top: 4px; border-top: 1px solid color-mix(in srgb, var(--accent) 18%, transparent); font-size: 10.5px; line-height: 14px; color: var(--text-2); overflow: hidden; text-overflow: ellipsis; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow-wrap: anywhere; }
+.shape-actor .node-desc, .shape-pill .node-desc { text-align: center; }
+.arch-node:has(.node-link) .node-desc { padding-right: 52px; }
 .node-link { position: absolute; right: 6px; bottom: 5px; display: inline-flex; align-items: center; gap: 3px; font-size: 9.5px; font-family: var(--font-mono); color: var(--accent-fg); background: var(--accent-soft); padding: 1px 5px; border-radius: 3px; }
 .tag { margin-left: auto; font-style: normal; font-size: 9px; padding: 0 5px; border: 1px dashed var(--cat-internal); border-radius: 3px; color: var(--cat-internal); text-transform: none; letter-spacing: 0; white-space: nowrap; }
 

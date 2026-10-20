@@ -1,11 +1,37 @@
 import { Handle, NodeResizer, Position, type NodeProps } from '@xyflow/react';
 import { CornerDownRight } from 'lucide-react';
-import { memo } from 'react';
+import { memo, useLayoutEffect, useRef } from 'react';
 import { getIcon } from '@/components/ui/iconMap';
 import { getPattern } from '@/data/architecture';
 import { getCategory, getComponentType } from '@/data/componentCatalog';
 import type { ArchNode as ArchNodeType } from '@/domain/flowMapper';
 import { useEditorStore } from '@/store/editorStore';
+
+const DESC_LINE_HEIGHT = 14;
+
+function NodeDescription({ text }: { text: string }) {
+  const ref = useRef<HTMLParagraphElement>(null);
+
+  useLayoutEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const fit = () => {
+      const lines = Math.floor(el.clientHeight / DESC_LINE_HEIGHT);
+      el.style.webkitLineClamp = String(Math.max(lines, 1));
+      el.style.visibility = el.clientHeight < DESC_LINE_HEIGHT * 0.8 ? 'hidden' : 'visible';
+    };
+    fit();
+    const ro = new ResizeObserver(fit);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, [text]);
+
+  return (
+    <p ref={ref} className="node-desc" title={text}>
+      {text}
+    </p>
+  );
+}
 
 const HANDLES: [string, Position][] = [
   ['top', Position.Top],
@@ -64,6 +90,7 @@ function ArchNodeImpl({ id, data, selected }: NodeProps<ArchNodeType>) {
             {p.name}
           </div>
           {p.technology && <div className="node-tech">{p.technology}</div>}
+          {p.description?.trim() && <NodeDescription text={p.description.trim()} />}
           {p.linkedDiagramId && (
             <span className="node-link" title="Possui diagrama de detalhe (duplo clique para abrir)">
               <CornerDownRight size={11} />
