@@ -22,7 +22,7 @@ export function AppShell() {
           <span>archdraw</span>
         </div>
         <nav className="nav">
-          <NavLink to="/" end>
+          <NavLink to="/dashboard" end>
             <LayoutDashboard size={16} />
             Dashboard
           </NavLink>

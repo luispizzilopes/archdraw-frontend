@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { AppShell } from '@/components/layout/AppShell';
 import { DashboardPage } from '@/pages/DashboardPage';
+import { LandingPage } from '@/pages/landing/LandingPage';
 import { EditorPage } from '@/pages/EditorPage';
 import { ProjectPage } from '@/pages/ProjectPage';
 import { ProjectsPage } from '@/pages/ProjectsPage';
@@ -13,6 +14,7 @@ import { PrivateRoutes } from './PrivateRoutes';
 import { PublicRoutes } from './PublicRoutes';
 
 export const router = createBrowserRouter([
+  { path: '/', element: <LandingPage /> },
   {
     element: <PublicRoutes />,
     children: [
@@ -27,7 +29,7 @@ export const router = createBrowserRouter([
       {
         element: <AppShell />,
         children: [
-          { path: '/', element: <DashboardPage /> },
+          { path: '/dashboard', element: <DashboardPage /> },
           { path: '/projects', element: <ProjectsPage /> },
           { path: '/projects/:projectId', element: <ProjectPage /> },
           { path: '/settings', element: <SettingsPage /> },

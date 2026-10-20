@@ -6,6 +6,6 @@ export function PublicRoutes() {
   const { isAuthenticated, restoring } = useAuth();
 
   if (restoring) return <AuthSkeleton />;
-  if (isAuthenticated) return <Navigate to="/" replace />;
+  if (isAuthenticated) return <Navigate to="/dashboard" replace />;
   return <Outlet />;
 }

@@ -15,7 +15,7 @@ function renderAt(path: string) {
         element: <PrivateRoutes />,
         children: [
           { path: '/projects', element: <div>área privada</div> },
-          { path: '/', element: <div>início</div> },
+          { path: '/dashboard', element: <div>início</div> },
         ],
       },
     ],
@@ -44,7 +44,7 @@ describe('proteção de rotas', () => {
   it('usuário autenticado é redirecionado para fora do login', () => {
     auth.isAuthenticated = true;
     const router = renderAt('/login');
-    expect(router.state.location.pathname).toBe('/');
+    expect(router.state.location.pathname).toBe('/dashboard');
     expect(screen.getByText('início')).toBeInTheDocument();
   });
 

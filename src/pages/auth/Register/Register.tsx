@@ -27,7 +27,7 @@ export function Register() {
     if (invalid) return;
     try {
       await execute({ name: name.trim(), email: email.trim(), password });
-      nav('/', { replace: true });
+      nav('/dashboard', { replace: true });
     } catch {}
   };
 

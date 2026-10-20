@@ -10,7 +10,7 @@ import { validateEmail } from '@/utils/validation';
 export function Login() {
   const nav = useNavigate();
   const location = useLocation();
-  const from = (location.state as { from?: string } | null)?.from ?? '/';
+  const from = (location.state as { from?: string } | null)?.from ?? '/dashboard';
   const { execute, loading, error } = useLogin();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
